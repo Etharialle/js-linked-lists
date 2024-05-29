@@ -54,6 +54,63 @@ class LinkedList {
         }
         return lastNode;
     }
+    pop() {
+        if (this.head === null) {
+            return "Empty List - nothing to pop";
+        }
+        let size = this.getSize();
+        let lastNode = this.head;
+        for (let i = 0; i < size - 2; i++) {
+            lastNode = lastNode.nextNode;
+        }
+        lastNode.nextNode = null;
+        return lastNode;
+    }
+    contains(value) {
+        if (this.head === null) {
+            return "Empty List - nothing to find";
+        }
+        let lastNode = this.head;
+        while (lastNode.nextNode != null) {
+            if (lastNode.value === value) {
+                return true;
+            }
+            lastNode = lastNode.nextNode;
+            
+        }
+        if (lastNode.value === value) {
+            return true;
+        }
+        return false;
+    }
+    find(value) {
+        if (this.head === null) {
+            return "Empty List - nothing to find";
+        }
+        let lastNode = this.head;
+        let size = this.getSize();
+        for (let i = 0; i < size; i++) {
+            if (lastNode.value === value) {
+                return i;
+            }
+            lastNode = lastNode.nextNode;
+        }
+        return "Not in list";
+    }
+    toString() {
+        if (this.head === null) {
+            return "Empty List - nothing to stringify";
+        }
+        let lastNode = this.head;
+        let size = this.getSize();
+        let listString = '';
+        for (let i = 0; i < size; i++) {
+            listString += `( ${lastNode.value} ) - > `;
+            lastNode = lastNode.nextNode;
+        }
+        listString += "null";
+        return listString;
+    }
 }
 
 class Node {
@@ -65,13 +122,21 @@ class Node {
 
 let firstNode = new Node(3);
 let secondNode = new Node(5);
+let thirdNode = new Node(22);
 let firstList = new LinkedList();
-console.log(firstList.getSize());
+//console.log(firstList.getSize());
+//console.log(firstList.find(3));
+//console.log(firstList.toString());
 firstList.append(firstNode);
 firstList.append(secondNode);
-console.log(firstNode);
+firstList.append(thirdNode);
+//console.log(firstNode);
 console.log(firstList);
-console.log(firstList.getSize());
-console.log(firstList.getHead());
-console.log(firstList.getTail());
-console.log(firstList.at(0));
+//console.log(firstList.getSize());
+//console.log(firstList.getHead());
+//console.log(firstList.getTail());
+//console.log(firstList.at(0));
+//console.log(firstList.pop());
+//console.log(firstList.contains(22));
+console.log(firstList.find(22));
+console.log(firstList.toString());
