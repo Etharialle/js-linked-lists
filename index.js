@@ -43,6 +43,17 @@ class LinkedList {
         }
         return lastNode;
     }
+    at(index) { // zero indexed
+        if(this.getSize() < index) {
+            return "Out of Range";
+        }
+        let lastNode = this.head;
+        for (let i = 0; i < index; i++) {
+            lastNode = lastNode.nextNode;
+
+        }
+        return lastNode;
+    }
 }
 
 class Node {
@@ -63,3 +74,4 @@ console.log(firstList);
 console.log(firstList.getSize());
 console.log(firstList.getHead());
 console.log(firstList.getTail());
+console.log(firstList.at(0));
