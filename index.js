@@ -14,6 +14,14 @@ class LinkedList {
         lastNode.nextNode = node;
         return
     }
+    prepend(node) {
+        if (this.head === null) {
+            this.head = node;
+            return;
+        }
+        node.nextNode = this.head
+        this.head = node;
+    }
     getSize() {
         let size = 0;
         if (this.head === null) {
@@ -123,6 +131,7 @@ class Node {
 let firstNode = new Node(3);
 let secondNode = new Node(5);
 let thirdNode = new Node(22);
+let fourthNode = new Node(66);
 let firstList = new LinkedList();
 //console.log(firstList.getSize());
 //console.log(firstList.find(3));
@@ -132,11 +141,15 @@ firstList.append(secondNode);
 firstList.append(thirdNode);
 //console.log(firstNode);
 console.log(firstList);
+console.log(firstList.getSize());
+firstList.prepend(fourthNode);
 //console.log(firstList.getSize());
 //console.log(firstList.getHead());
 //console.log(firstList.getTail());
 //console.log(firstList.at(0));
 //console.log(firstList.pop());
 //console.log(firstList.contains(22));
-console.log(firstList.find(22));
-console.log(firstList.toString());
+//console.log(firstList.find(22));
+//console.log(firstList.toString());
+console.log(firstList.getSize());
+console.log(firstList);
