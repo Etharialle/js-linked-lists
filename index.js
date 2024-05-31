@@ -62,6 +62,24 @@ class LinkedList {
         }
         return lastNode;
     }
+    removeAt(index) {
+        if (this.head === null) {
+            return "Empty List - nothing to remove";
+        }
+        const removedNode = this.at(index);
+        if (removedNode.nextNode === null) {
+            this.pop();
+            return;
+        }
+        if (index > 0) {
+            const lastNode = this.at(index - 1);
+            lastNode.nextNode = removedNode.nextNode;
+            return;
+        }
+        const firstNode = this.at(index + 1);
+        this.head = firstNode;
+        return;
+    }
     pop() {
         if (this.head === null) {
             return "Empty List - nothing to pop";
@@ -98,12 +116,12 @@ class LinkedList {
         let lastNode = this.head;
         let size = this.getSize();
         for (let i = 0; i < size; i++) {
-            if (lastNode.value === value) {
+            if (lastNode.value[value]) {
                 return i;
             }
             lastNode = lastNode.nextNode;
         }
-        return "Not in list";
+        return false;
     }
     toString() {
         if (this.head === null) {
